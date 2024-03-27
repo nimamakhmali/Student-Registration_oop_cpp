@@ -21,3 +21,18 @@ class Course
    void input(ifstream & infile);
    void output(ofstream & ofile) const;
 };
+
+
+int main()
+{  
+  ifstream infile("rinput.txt" , ios::app | ios::in);
+  if(!infile) 
+  {cout<<"OOPS";}
+  Registration R;
+  R.input(infile);
+  ofstream ofile("routput.txt" , ios::app | ios::out);
+  if(!ofile) 
+  {cout<<"OOPS";}
+  R.output(ofile);
+  return 0;
+}
