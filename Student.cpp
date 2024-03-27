@@ -22,8 +22,34 @@ class Course
    void output(ofstream & ofile) const;
 };
 
+class Registration
+{
+  private:
+   long studentID;
+   unsigned semester;
+   unsigned count;
+   Course courses[MaxCourses];
 
-int main()
+  public:
+   Registration();
+   void input(ifstream & infile);
+   void output(ofstream & ofile)const; 
+};
+ 
+ void Registration::input(ifstream & infile)
+  {
+    infile>>studentID>>semester>>count;
+      for(unsigned i=0;i<count;i++)
+      {courses[i].input(infile);}
+  }
+ void Registration::output(ofstream & ofile)const
+  {
+    ofile<<"Student ID: "<<studentID<<"\n"<<"semester:   "<<semester<<endl;
+     for(unsigned i=0;i<count;i++)
+     {courses[i].output(ofile);}
+  }
+
+main()
 {  
   ifstream infile("rinput.txt" , ios::app | ios::in);
   if(!infile) 
